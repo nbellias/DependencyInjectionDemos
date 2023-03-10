@@ -1,4 +1,6 @@
 ﻿using NLog.Fluent;
+using SimpleDI.Models;
+using SimpleDI.Services.Authorize;
 using SimpleDI.Services.WriteLog;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ namespace SimpleDI.Services.SendSMS
     public class SendSMS: ISendSMS
     {
         private readonly IWriteLog _log;
-
+        
         public SendSMS(IWriteLog log)
         {
             _log = log;

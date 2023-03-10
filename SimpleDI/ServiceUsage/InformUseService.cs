@@ -8,12 +8,12 @@ using SimpleDI.Services.SendSMS;
 
 namespace SimpleDI.ServiceUsage
 {
-    public class Inform
+    public class InformUseService
     {
         private readonly ISendEmail _emailService;
         private readonly ISendSMS _smsService;
 
-        public Inform(ISendEmail emailService, ISendSMS smsService)
+        public InformUseService(ISendEmail emailService, ISendSMS smsService)
         {
             _emailService = emailService;
             _smsService = smsService;

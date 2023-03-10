@@ -9,5 +9,6 @@ namespace SimpleDI.Services.WriteLog
     public interface IWriteLog
     {
         public void WriteLogMessage(string message);
+        public void ShutdownLogManager();
     }
 }

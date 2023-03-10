@@ -1,4 +1,6 @@
-﻿using SimpleDI.Services.WriteLog;
+﻿using SimpleDI.Models;
+using SimpleDI.Services.Authorize;
+using SimpleDI.Services.WriteLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace SimpleDI.Services.SendEmail
 {
-    public class SendEmail: ISendEmail
+    public class SendEmail : ISendEmail
     {
         private readonly IWriteLog _log;
-
         public SendEmail(IWriteLog log)
         {
             _log = log;
@@ -22,5 +23,5 @@ namespace SimpleDI.Services.SendEmail
             _log.WriteLogMessage($"{message} has been sent");
         }
     }
-    
+
 }

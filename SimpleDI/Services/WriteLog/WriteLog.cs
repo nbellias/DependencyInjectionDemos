@@ -26,10 +26,13 @@ namespace SimpleDI.Services.WriteLog
             {
                 logger.Error(ex, "An unhandled exception occurred");
             }
-            finally
-            {
-                LogManager.Shutdown();
-            }
+            
+        }
+
+        public void ShutdownLogManager()
+        {
+            logger.Info("Shuting down log manager...done");
+            LogManager.Shutdown();
         }
     }
 }
