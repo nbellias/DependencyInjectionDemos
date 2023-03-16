@@ -11,9 +11,9 @@ namespace SimpleDI.ServiceUsage
     public class InformUseService
     {
         private readonly ISendEmail _emailService;
-        private readonly ISendSMS _smsService;
+        private readonly ISendSms _smsService;
 
-        public InformUseService(ISendEmail emailService, ISendSMS smsService)
+        public InformUseService(ISendEmail emailService, ISendSms smsService)
         {
             _emailService = emailService;
             _smsService = smsService;
@@ -21,7 +21,7 @@ namespace SimpleDI.ServiceUsage
 
         public void InformWithEmailAndSMS(string message)
         {
-            Parallel.Invoke(() => _emailService.SendAnEmailMessage(message), () => _smsService.SendAnSMSMessage(message));
+            Parallel.Invoke(() => _emailService.SendAnEmailMessage(message), () => _smsService.SendAnSmsMessage(message));
         }
     }
 }

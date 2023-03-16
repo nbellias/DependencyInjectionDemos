@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SimpleDI.Services.SendSMS
 {
-    public interface ISendSMS
+    public interface ISendSms
     {
-        public void SendAnSMSMessage(string message);
+        public void SendAnSmsMessage(string message);
     }
 }

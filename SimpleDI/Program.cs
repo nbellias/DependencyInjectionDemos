@@ -12,9 +12,9 @@ IWriteLog writeLog = new WriteLog();
 IAuthenticate authenticate = new Authenticate(writeLog);
 IAuthorize authorize = new Authorize(writeLog);
 ISendEmail sendEmail = new SendEmail(writeLog);
-ISendSMS sendSMS = new SendSMS(writeLog);
+ISendSms sendSms = new SendSms(writeLog);
 
-InformUseService inform = new InformUseService(sendEmail, sendSMS);
+InformUseService inform = new InformUseService(sendEmail, sendSms);
 
 Console.WriteLine("Simple Dependency Injection");
 Console.WriteLine();
@@ -37,7 +37,7 @@ var authResponse = authenticate.IsAuthenticated(request);
 
 var accessResponse = authorize.IsAuthorized(authResponse);
 
-if(accessResponse.Data.Count == 2)
+if(accessResponse.Data != null && accessResponse.Data.Count == 2)
 {
     inform.InformWithEmailAndSMS("Hello World");
     writeLog.ShutdownLogManager();

@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace SimpleDI.Services.SendSMS
 {
-    public class SendSMS: ISendSMS
+    public class SendSms: ISendSms
     {
         private readonly IWriteLog _log;
         
-        public SendSMS(IWriteLog log)
+        public SendSms(IWriteLog log)
         {
             _log = log;
         }
 
-        public void SendAnSMSMessage(string message)
+        public void SendAnSmsMessage(string message)
         {
             Console.WriteLine("Sending SMS: " + message);
             _log.WriteLogMessage($"{message} has been sent");

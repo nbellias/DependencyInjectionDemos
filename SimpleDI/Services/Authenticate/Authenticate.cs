@@ -41,24 +41,29 @@ namespace SimpleDI.Services.Authenticate
             var response = new Response<dynamic>();
             response.Data = null;
             response.Success = false;
-            response.Message = $"User {userAuthenticationRequest.Data.username} could not be authenticated";
 
-            foreach (dynamic item in userDatabase)
+            if (userAuthenticationRequest.Data != null)
             {
-                if(item.UserName == userAuthenticationRequest.Data.username && 
-                    item.PassWord == userAuthenticationRequest.Data.password)
+                response.Message = $"User {userAuthenticationRequest.Data.username} could not be authenticated";
+
+                foreach (dynamic item in userDatabase)
                 {
-                    response.Data = new { 
-                        user = item.UserName,
-                        group = item.Group
-                    };
-                    response.Success = true;
-                    response.Message = $"User {userAuthenticationRequest.Data.username} authenticated";
-                    
-                    break;
+                    if (item.UserName == userAuthenticationRequest.Data.username &&
+                        item.PassWord == userAuthenticationRequest.Data.password)
+                    {
+                        response.Data = new
+                        {
+                            user = item.UserName,
+                            group = item.Group
+                        };
+                        response.Success = true;
+                        response.Message = $"User {userAuthenticationRequest.Data.username} authenticated";
+
+                        break;
+                    }
                 }
+                _log.WriteLogMessage(response.Message);
             }
-            _log.WriteLogMessage(response.Message);
 
             return response;
         }
